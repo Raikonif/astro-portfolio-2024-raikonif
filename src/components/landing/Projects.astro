@@ -2,15 +2,15 @@
 import CardProject from "../CardProject.astro";
 ---
 
-<section class="w-full flex flex-col">
+<section class="w-full py-20 flex flex-col px-4">
   <h2
-    class="text-8xl text-center font-bold bg-gradient-to-r from-green-500 to-emerald-100 bg-clip-text text-transparent"
+    class="text-6xl md:text-8xl pb-7 text-center font-bold bg-gradient-to-r from-green-500 to-emerald-100 bg-clip-text text-transparent"
   >
     Projects
   </h2>
-  <div class="flex">
+  <ul class="flex flex-col md:flex-row">
     <CardProject />
     <CardProject />
     <CardProject />
-  </div>
+  </ul>
 </section>

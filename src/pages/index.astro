@@ -1,17 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import Header from "../components/landing/Header.astro";
 import Hero from "../components/landing/Hero.astro";
 import Projects from "../components/landing/Projects.astro";
+import Skills from "../components/landing/Skills.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <body>
+    <div class="min-h-screen bg-black text-white">
       <Header />
       <Hero />
       <Projects />
+      <Skills />
+    </div>
     </body>
   </main>
 </Layout>

@@ -3,28 +3,25 @@ import { IoMdSunny } from "react-icons/io";
 import { MdDeveloperMode } from "react-icons/md";
 ---
 
-<div
-  class="fixed flex justify-between bg-gradient-to-r from-green-500 to-emerald-400 w-full py-3 px-10"
+<header
+  class="fixed flex justify-between bg-gradient-to-r from-green-500 to-emerald-400 w-full p-2 px-3 md:p-4"
 >
   <div
-    class="flex items-center space-x-2 cursor-pointer hover:bg-green-500/60 active:bg-green-600/40 p-1 px-3 rounded-xl"
+    class="flex items-center gap-2 cursor-pointer hover:bg-green-500/60 active:bg-green-600/40 rounded-xl"
   >
-    <MdDeveloperMode className="text-black" size={30} />
-    <h1 class="text-xl font-bold tracking-tighter text-black">Raikonif Developer</h1>
+    <MdDeveloperMode className="text-black" size="30" />
+    <h1 class="md:text-xl font-bold text-black">Raikonif Developer</h1>
   </div>
-  <ul class="flex space-x-8">
+  <ul class="flex gap-4">
     <li
-      class="text-xl tracking-wide font-semibold cursor-pointer rounded-2xl hover:text-black p-1 px-3 active:bg-green-500/60"
+      class="md:text-xl font-semibold cursor-pointer rounded-2xl hover:text-black active:bg-green-500/60"
     >
       Projects
     </li>
     <li
-      class="text-xl tracking-wide font-semibold cursor-pointer text-black rounded-2xl p-1 px-3 active:bg-green-500/60"
+      class="md:text-xl font-semibold cursor-pointer text-black rounded-2xl active:bg-green-500/60"
     >
       About me
     </li>
-    <li class="items-center flex">
-      <IoMdSunny className="text-black" />
-    </li>
   </ul>
-</div>
+</header>
