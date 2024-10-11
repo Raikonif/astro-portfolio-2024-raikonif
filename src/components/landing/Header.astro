@@ -1,10 +1,10 @@
 ---
-import { IoMdSunny } from "react-icons/io";
 import { MdDeveloperMode } from "react-icons/md";
+import { TiThMenu } from "react-icons/ti";
 ---
 
 <header
-  class="fixed flex justify-between bg-gradient-to-r from-green-500 to-emerald-400 w-full p-2 px-3 md:p-4"
+  class="fixed flex justify-between items-center bg-gradient-to-r from-green-500 to-emerald-400 w-full p-2 px-3 md:p-4"
 >
   <div
     class="flex items-center gap-2 cursor-pointer hover:bg-green-500/60 active:bg-green-600/40 rounded-xl"
@@ -12,7 +12,8 @@ import { MdDeveloperMode } from "react-icons/md";
     <MdDeveloperMode className="text-black" size="30" />
     <h1 class="md:text-xl font-bold text-black">Raikonif Developer</h1>
   </div>
-  <ul class="flex gap-4">
+  <TiThMenu size="20" className="md:hidden text-black"/>
+  <ul class="hidden md:flex flex-col md:flex-row gap-4 fixed right-0 w-full md:static md:w-fit top-12 p-2 md:p-0 bg-green-300 md:bg-transparent">
     <li
       class="md:text-xl font-semibold cursor-pointer rounded-2xl hover:text-black active:bg-green-500/60"
     >
