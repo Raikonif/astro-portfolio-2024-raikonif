@@ -1,18 +1,7 @@
 ---
-const scrollToSection = (sectionId: string = PROJECTS) => {
-  console.log("clicked")
-  document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-
-  };
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import { HERO, PROJECTS } from "../../constants/general.constants";
 ---
-<script>
-  function scrollToSection () {
-    console.log("clicked")
-    document.getElementById(PROJECTS)?.scrollIntoView({ behavior: "smooth" });
-  }
-</script>
 
 <section class="px-10 min-h-screen flex pb-20 items-center justify-center w-full" id={HERO}>
   <h1
