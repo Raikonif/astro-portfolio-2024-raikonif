@@ -1,18 +1,28 @@
 ---
 import { FaArrowAltCircleDown } from "react-icons/fa";
+import { PiReadCvLogoFill } from "react-icons/pi";
 import { HERO, PROJECTS } from "../../constants/general.constants";
 ---
 
-<section class="px-10 min-h-screen flex pb-20 items-center justify-center w-full" id={HERO}>
+<section
+  class="px-10 min-h-screen flex flex-col pb-20 items-center justify-center w-full"
+  id={HERO}
+>
   <h1
-    class="text-6xl md:text-8xl items-center text-center font-bold bg-gradient-to-r from-green-500 to-emerald-100 bg-clip-text text-transparent"
+    class="z-10 text-6xl md:text-8xl items-center text-center font-bold bg-gradient-to-r from-green-500 to-emerald-100 bg-clip-text text-transparent"
   >
     Hi! I'm Diego <br /> Software Developer!
   </h1>
-  <a href={`#${PROJECTS}`} class="text-4xl md:text-6xl animate-bounce absolute bottom-7 text-green-500 hover:text-green-400 active:text-green-300">
-    <FaArrowAltCircleDown
-    className="text-4xl md:text-6xl"
-  />
+  <a
+    href="https://drive.google.com/uc?export=download&id=1o8V_DhdpkpOea-IoQIIlK3bjSctJS37f"
+    class="flex items-center gap-2 text-black bg-gradient-to-r from-green-500 to-emerald-400 absolute bottom-1/4 p-3 font-semibold text-lg hover:bg-green-400 rounded-lg mt-10"
+  >
+    Download CV <PiReadCvLogoFill/>
+  </a>
+  <a
+    href={`#${PROJECTS}`}
+    class="text-4xl md:text-6xl animate-bounce absolute bottom-7 text-green-500 hover:text-green-400 active:text-green-300"
+  >
+    <FaArrowAltCircleDown className="text-4xl md:text-6xl" />
   </a>
 </section>
-
