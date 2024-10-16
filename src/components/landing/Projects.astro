@@ -1,6 +1,18 @@
 ---
 import CardProject from "../CardProject.astro";
 import { PROJECTS } from "../../constants/general.constants";
+const projects = [
+  {
+    title: "RIP QR",
+    description: "Service for clients that need to publish about their loved ones, data, videos, photos and music.",
+    link: "/projects/proj-1",
+  },
+  {
+    title: "SysPDFSur",
+    description: "Service for clients that need to publish about their loved ones, data, videos, photos and music.",
+    link: "/projects/proj-2",
+  },
+]
 ---
 
 <section class="w-full py-20 flex flex-col px-4" id={PROJECTS}>
@@ -10,8 +22,14 @@ import { PROJECTS } from "../../constants/general.constants";
     Projects
   </h2>
   <ul class="flex flex-col md:flex-row">
-    <CardProject />
-    <CardProject />
-    <CardProject />
+    {projects.map( project=>
+      <li class="bg-neutral-950 p-6 m-4 rounded-xl z-10">
+        <h3 class="text-xl text-green-500 font-bold mb-2">{project.title}</h3>
+        <p class="mb-4">{project.description}</p>
+        <div class="flex w-full justify-end">
+          <a href={project.link} class="bg-green-500 p-3 cursor-pointer font-bold rounded-xl text-black">Learn more
+            →</a>
+        </div>
+      </li>)}
   </ul>
 </section>
