@@ -1,49 +1,160 @@
-<div class="bg-cyan-700 p-4 space-y-3">
-  <h1 class="font-bold">{"Project RIP QR"}</h1>
-  <p>
-    Service for clients that need to publish about their loved ones, data, videos, photos and music.
-    and you can visit the profile of the deceased person scanning the QR code. provided by the
-    service.
-  </p>
-  <br />
-  <span class="font-serif text-md text-slate-600"
-    >This project works through an admin panel that let us make the management of the profiles and
-    comments where you can get the QR Code to share with the client.</span
-  >
-  <img
-    alt="admin panel"
-    src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/qrmemorias/admin/Screenshot%202024-09-26%20115736.png"
-    class="rounded-md h-[300px] m-5"
-  />
-  <span class="font-serif text-md text-slate-600"
-    >This is the profile page where we found the data of the current person.</span
-  >
-  <img
-    alt="admin panel"
-    src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/qrmemorias/client/Screenshot%202024-10-16%20162348.png"
-    class="rounded-md h-[300px] m-5"
-  />
-  <span class="font-serif text-md text-slate-600"
-    >This is the landing page where we can found all the services option and how contact to the
-    owner of this service.</span
-  >
-  <img
-    alt="admin panel"
-    src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/qrmemorias/client/Screenshot%202024-10-16%20162957.png"
-    class="rounded-md h-[300px] m-5"
-  />
-  <div class="flex flex-col">
-  <span class="text-2xl">this is the link to the landing page:</span>
-  <a
-    href="https://www.qrmemorias.com/"
-    target="_blank"
-    class="text-blue-500 font-bold underline underline-offset-2">qrmemorias.com</a
-  >
-  <span class="text-2xl">this is the link to the landing page:</span>
-  <a
-    href="https://www.qrmemorias.com/profiles/62"
-    target="_blank"
-    class="text-green-500 font-bold underline underline-offset-2">profile example</a
-  >
+---
+import Layout from "../../layouts/Layout.astro";
+import { BiLogoPostgresql } from "react-icons/bi";
+import { FaDigitalOcean, FaDocker, FaGitAlt, FaGithub, FaPython, FaReact } from "react-icons/fa";
+import { SiCss3, SiFastapi, SiRailway, SiRender, SiTypescript } from "react-icons/si";
+import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
+import { RiSupabaseFill, RiTailwindCssFill } from "react-icons/ri";
+---
+
+<Layout title={"Project RIP QR"}>
+  <div class="bg-neutral-950 text-white p-8 space-y-3">
+    <h1
+      class="font-bold text-4xl bg-gradient-to-r from-green-500 to-emerald-100 bg-clip-text text-transparent md:text-6xl"
+    >
+      {"Project RIP QR"}
+    </h1>
+    <p class="text-wrap text-xl md:text-3xl">
+      Service for clients that need to publish about their loved ones, data, videos, photos and
+      music. and you can visit the profile of the deceased person scanning the QR code. provided by
+      the service.
+    </p>
+    <div class="flex justify-center py-5">
+      <span class="text-3xl text-green-500 font-semibold text-center"> Technologies used: </span>
+    </div>
+    <ul class="flex flex-wrap gap-3 justify-center">
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-sky-800"
+      >
+        <FaPython size="30" />
+        Python
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-yellow-500"
+      >
+        <IoLogoJavascript size="30" />
+        Javascript
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-blue-600"
+      >
+        <SiTypescript size="30" />
+        Typescript
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-red-500"
+      >
+        <FaGitAlt size="30" />
+        Git
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-blue-700"
+      >
+        <BiLogoPostgresql size="30" />
+        Posgresql
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-cyan-600"
+      >
+        <FaReact size="30" />
+        React
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-green-600"
+      >
+        <SiFastapi size="30" />
+        FastAPI
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-emerald-600"
+      >
+        <RiTailwindCssFill size="30" />
+        TailwindCSS
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-emerald-400"
+      >
+        <RiSupabaseFill size="30" />
+        Supabase
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-blue-900"
+      >
+        <FaDigitalOcean size="30" />
+        Digital Ocean
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-gray-950"
+      >
+        <FaGithub size="30" />
+        Github
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-stone-900"
+      >
+        <IoLogoVercel size="30" />
+        Vercel
+      </li>
+      <li
+        class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-slate-900"
+      >
+        <SiRender size="30" />
+        Render
+      </li>
+    </ul>
+    <br />
+    <div class="flex flex-col justify-between">
+      <div class="flex">
+        <div class="text-wrap">
+          <h2 class="text-xl lg:text-3xl mb-5 text-green-500 font-bold">ADMIN PANEL</h2>
+          <span class="w-1/2 md:text-xl text-md"
+            >This project works through an admin panel that let us make the management of the
+            profiles and comments where you can get the QR Code to share with the client we can make
+            the usual operations like read create update and delete. And can upload images to the
+            storage and link with an url to the data profile.</span
+          >
+        </div>
+        <img
+          alt="admin panel"
+          src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/qrmemorias/admin/Screenshot%202024-09-26%20115736.png"
+          class="rounded-md border-2 border-green-500 w-1/2 m-5"
+        />
+      </div>
+      <div class="flex items-center">
+        <span class="w-1/2 md:text-xl text-md"
+          >This is the profile page where we found the data of the current person.</span
+        >
+        <img
+          alt="admin panel"
+          src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/qrmemorias/client/Screenshot%202024-10-16%20162348.png"
+          class="rounded-md border-2 border-green-500 w-1/2 m-5"
+        />
+      </div>
+      <div class="flex items-center">
+        <span class="w-1/2 text-md"
+          >This is the landing page where we can found all the services option and how contact to
+          the owner of this service.</span
+        >
+        <img
+          alt="admin panel"
+          src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/qrmemorias/client/Screenshot%202024-10-16%20162957.png"
+          class="rounded-md border-green-500 border-2 w-1/2 m-5"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <span class="text-2xl">this is the link to the landing page:</span>
+      <a
+        href="https://www.qrmemorias.com/"
+        target="_blank"
+        class="text-blue-500 font-bold underline underline-offset-2">qrmemorias.com</a
+      >
+      <span class="text-2xl">this is the link to the landing page:</span>
+      <a
+        href="https://www.qrmemorias.com/profiles/62"
+        target="_blank"
+        class="text-green-500 font-bold underline underline-offset-2">profile example</a
+      >
+    </div>
   </div>
-</div>
+</Layout>
