@@ -10,13 +10,15 @@ import Header from "../../components/landing/Header.astro";
 
 <Layout title={"Project RIP QR"}>
   <Header link="/" />
-  <div class="bg-neutral-950 text-white md:p-8 space-y-3">
+  <div class="bg-[#13151a] text-white md:p-8 space-y-3">
     <div class="px-5">
+      <div class="pb-3 md:pb-5">
       <h1
-        class="font-bold text-3xl pt-14 md:pt-20 bg-gradient-to-r from-green-500 to-emerald-100 bg-clip-text text-transparent md:text-5xl pb-2"
+        class="font-bold text-3xl pt-16 md:pt-20 bg-gradient-to-r from-green-500 to-emerald-100 bg-clip-text text-transparent md:text-5xl pb-2"
       >
         Project RIP QR
       </h1>
+      </div>
       <p class="text-wrap text-sm md:text-2xl">
         Service for clients that need to publish about their loved ones, data, videos, photos and
         music. and you can visit the profile of the deceased person scanning the QR code provided by
@@ -26,21 +28,41 @@ import Header from "../../components/landing/Header.astro";
         I used FastAPI for the backend and React for the frontend, and Supabase for the database and
         storage. In addition, I used TailwindCSS for the styles and Digital Ocean for additional Storage.
       </p>
+      <div class="w-full mt-4 md:mt-7 flex flex-col items-center">
+        <div class="bg-black p-4 h-fit w-fit justify-center flex flex-col">
+          <h2 class="text-xl text-green-500 font-semibold md:text-2xl">Key Features</h2>
+          <ul
+            class="md:ml-10 md:max-w-md max-w-xs ml-5 space-y-3 list-disc mt-2 md:mt-5 w-fit rounded-xl"
+          >
+            <li class="text-sm md:text-2xl">Focused in local clients</li>
+            <li class="text-sm md:text-2xl">There are clients using it</li>
+            <li class="text-sm md:text-2xl">Focus on a memorial view</li>
+            <li class="text-sm md:text-2xl">part of a physical plate</li>
+            <li class="text-sm md:text-2xl">
+              Admin panel to create profiles and the management of comments
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <br />
     <div class="flex flex-col justify-between space-y-3 md:space-y-10">
-      <div class="bg-green-500 px-5 text-center md:px-0 py-2 md:py-3">
+      <div
+        class="bg-gradient-to-r from-green-500 to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
+      >
         <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Admin Panel</h2>
       </div>
       <div class="flex flex-col md:flex-row gap-3">
-        <div class="w-full px-5 md:w-1/2">
-          <span class="md:text-xl">
-            This project works through an admin panel that let us make the management of the
-            profiles and comments where you can get the QR Code to share with the client we can make
-            the usual operations like read create update and delete. And can upload images to the
-            storage and link with an url to the data profile.
-          </span>
+        <div class="w-fit px-6 md:w-1/2">
+          <div class="bg-black p-5">
+            <span class="md:text-xl">
+              This project works through an admin panel that let us make the management of the
+              profiles and comments where you can get the QR Code to share with the client we can
+              make the usual operations like read create update and delete. And can upload images to
+              the storage and link with an url to the data profile.
+            </span>
+          </div>
         </div>
         <img
           alt="admin panel"
@@ -48,16 +70,20 @@ import Header from "../../components/landing/Header.astro";
           class="border-y-2 border-green-500 md:w-1/2"
         />
       </div>
-      <div class="bg-green-500 px-5 text-center md:px-0 py-2 md:py-3">
+      <div
+        class="bg-gradient-to-r from-green-500 to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
+      >
         <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Profile Page</h2>
       </div>
       <div class="flex flex-col md:flex-row-reverse gap-3">
-        <div class="w-full px-5 md:w-1/2">
-          <span class="md:text-xl">
-            This is the profile page where we found the data of the current person. and let us share
-            this profile, as link or QR Code, and we can comment and see the comments of the people
-            that visit the profile.
-          </span>
+        <div class="w-full px-6 md:w-1/2">
+          <div class="bg-black p-5">
+            <span class="md:text-xl">
+              This is the profile page where we found the data of the current person. and let us
+              share this profile, as link or QR Code, and we can comment and see the comments of the
+              people that visit the profile.
+            </span>
+          </div>
         </div>
         <img
           alt="admin panel"
@@ -66,15 +92,20 @@ import Header from "../../components/landing/Header.astro";
         />
       </div>
 
-      <div class="bg-green-500 px-5 text-center md:px-0 py-2 md:py-3">
+      <div
+        class="bg-gradient-to-r from-green-500 to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
+      >
         <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Landing Page</h2>
       </div>
       <div class="flex flex-col md:flex-row gap-3">
-        <div class="w-full md:w-1/2 px-5">
-          <span class="md:text-xl">
-            This is the landing page where we can found all the services option, the steps to get a profile and how contact to
-            the owner of this service. In addition you can see a guide to use the service and how this works.
-          </span>
+        <div class="w-full md:w-1/2 px-6">
+          <div class="bg-black p-5">
+            <span class="md:text-xl">
+              This is the landing page where we can found all the services option, the steps to get
+              a profile and how contact to the owner of this service. In addition you can see a
+              guide to use the service and how this works.
+            </span>
+          </div>
         </div>
         <img
           alt="admin panel"
@@ -87,22 +118,23 @@ import Header from "../../components/landing/Header.astro";
         <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Links</h2>
       </div>
       <div class="flex gap-2 w-full">
-        <div class="flex flex-col md:w-1/2 items-center">
-          <span class="md:text-2xl">Link to the landing page:</span>
+        <div class="flex flex-col w-1/2 items-center z-10">
           <a
             href="https://www.qrmemorias.com/"
             target="_blank"
-            class="text-blue-500 md:text-2xl font-bold underline underline-offset-2">qrmemorias</a
+            class="md:text-2xl text-center hover:bg-green-500 active:bg-green-400 bg-green-600 rounded-full p-3"
           >
+            Landing page
+          </a>
         </div>
-        <div class="flex flex-col md:w-1/2 items-center">
-          <span class="md:text-2xl">Link to a profile example:</span>
+        <div class="flex flex-col w-1/2 items-center z-10">
           <a
             href="https://www.qrmemorias.com/profiles/62"
             target="_blank"
-            class="text-green-500 md:text-2xl font-bold underline underline-offset-2"
-            >profile example</a
+            class="md:text-2xl text-center hover:bg-sky-600 active:bg-sky-700 bg-sky-800 rounded-full p-3"
           >
+            Profile example
+          </a>
         </div>
       </div>
       <div class="bg-green-500 px-5 text-center md:px-0 py-2 md:py-3">
@@ -110,81 +142,81 @@ import Header from "../../components/landing/Header.astro";
           Tecnologies Used:
         </h2>
       </div>
-      <ul class="flex flex-wrap gap-3 justify-center">
+      <ul class="flex flex-wrap px-6 gap-3 justify-center">
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-sky-800"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-sky-800"
         >
           <FaPython size="25" />
           Python
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-yellow-500"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-yellow-500"
         >
           <IoLogoJavascript size="25" />
           Javascript
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-blue-600"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-blue-600"
         >
           <SiTypescript size="25" />
           Typescript
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-red-500"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-red-500"
         >
           <FaGitAlt size="25" />
           Git
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-blue-700"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-blue-700"
         >
           <BiLogoPostgresql size="25" />
           Posgresql
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-cyan-600"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-cyan-600"
         >
           <FaReact size="25" />
           React
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-green-600"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-green-600"
         >
           <SiFastapi size="25" />
           FastAPI
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-emerald-600"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-emerald-600"
         >
           <RiTailwindCssFill size="25" />
           TailwindCSS
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-emerald-400"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-emerald-400"
         >
           <RiSupabaseFill size="25" />
           Supabase
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-blue-900"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-blue-900"
         >
           <FaDigitalOcean size="25" />
           Digital Ocean
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-gray-950"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-gray-950"
         >
           <FaGithub size="30" />
           Github
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-stone-900"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-stone-900"
         >
           <IoLogoVercel size="25" />
           Vercel
         </li>
         <li
-          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-md text-xl md:text-3xl p-3 bg-slate-900"
+          class="flex w-fit gap-3 text-semibold justify-center items-center rounded-full text-xl p-3 bg-slate-900"
         >
           <SiRender size="25" />
           Render

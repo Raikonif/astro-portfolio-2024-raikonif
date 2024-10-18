@@ -18,6 +18,26 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<slot />
+		<script>
+			const menu = document.querySelector("#menu") as HTMLElement;
+			const menu_close = document.querySelector("#menu_close") as HTMLElement;
+			const menu_list = document.querySelector("#menu_list") as HTMLElement;
+			menu.addEventListener("click", () => {
+				menu_list.classList.remove("hidden");
+				menu.classList.add("hidden");
+				menu_close.classList.remove("hidden");
+			});
+			menu_list.addEventListener("click", () => {
+				menu_list.classList.add("hidden");
+				menu.classList.remove("hidden");
+				menu_close.classList.add("hidden");
+			});
+			menu_close.addEventListener("click", () => {
+				menu_list.classList.add("hidden");
+				menu.classList.remove("hidden");
+				menu_close.classList.add("hidden");
+			});
+		</script>
 	</body>
 </html>
 <style is:global>
