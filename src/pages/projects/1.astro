@@ -5,6 +5,7 @@ import { FaDigitalOcean, FaDocker, FaGitAlt, FaGithub, FaPython, FaReact } from 
 import { SiCss3, SiFastapi, SiRailway, SiRender, SiTypescript } from "react-icons/si";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { RiSupabaseFill, RiTailwindCssFill } from "react-icons/ri";
+import { FaLongArrowAltRight } from "react-icons/fa";
 import Header from "../../components/landing/Header.astro";
 ---
 
@@ -12,12 +13,12 @@ import Header from "../../components/landing/Header.astro";
   <Header link="/" />
   <div class="bg-[#13151a] text-white md:p-8 space-y-3">
     <div class="px-5">
-      <div class="pb-3 md:pb-5">
-      <h1
-        class="font-bold text-3xl pt-16 md:pt-20 bg-gradient-to-r from-green-500 to-emerald-100 bg-clip-text text-transparent md:text-5xl pb-2"
-      >
-        Project RIP QR
-      </h1>
+      <div class="pb-3 md:pb-5 pt-16 md:pt-20">
+        <h1
+          class="font-bold text-black text-3xl md:text-5xl bg-gradient-to-r rounded-full p-3 text-center from-green-500 to-emerald-400 md:py-4 py-2"
+        >
+          Project RIP QR
+        </h1>
       </div>
       <p class="text-wrap text-sm md:text-2xl">
         Service for clients that need to publish about their loved ones, data, videos, photos and
@@ -29,8 +30,8 @@ import Header from "../../components/landing/Header.astro";
         storage. In addition, I used TailwindCSS for the styles and Digital Ocean for additional Storage.
       </p>
       <div class="w-full mt-4 md:mt-7 flex flex-col items-center">
-        <div class="bg-black p-4 h-fit w-fit justify-center flex flex-col">
-          <h2 class="text-xl text-green-500 font-semibold md:text-2xl">Key Features</h2>
+        <div class="bg-black p-10 h-fit w-fit justify-center rounded-xl flex flex-col">
+          <h2 class="text-xl text-green-500 font-bold md:text-2xl">Key Features</h2>
           <ul
             class="md:ml-10 md:max-w-md max-w-xs ml-5 space-y-3 list-disc mt-2 md:mt-5 w-fit rounded-xl"
           >
@@ -49,9 +50,13 @@ import Header from "../../components/landing/Header.astro";
     <br />
     <div class="flex flex-col justify-between space-y-3 md:space-y-10">
       <div
-        class="bg-gradient-to-r from-green-500 to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
+        class="w-full justify-center items-center flex flex-col to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
       >
-        <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Admin Panel</h2>
+        <div class="flex rounded-2xl justify-center">
+          <div class="flex p-3 rounded-2xl bg-gradient-to-r to-emerald-400 from-green-500">
+            <h2 class="text-black lg:text-3xl md:text-2xl font-bold">Admin Panel</h2>
+          </div>
+        </div>
       </div>
       <div class="flex flex-col md:flex-row gap-3">
         <div class="w-fit px-6 md:w-1/2">
@@ -71,9 +76,11 @@ import Header from "../../components/landing/Header.astro";
         />
       </div>
       <div
-        class="bg-gradient-to-r from-green-500 to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
+        class="w-full justify-center items-center flex flex-col to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
       >
-        <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Profile Page</h2>
+        <div class="w-fit p-3 px-20 rounded-2xl bg-gradient-to-r to-emerald-400 from-green-500">
+          <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Profile Page</h2>
+        </div>
       </div>
       <div class="flex flex-col md:flex-row-reverse gap-3">
         <div class="w-full px-6 md:w-1/2">
@@ -84,18 +91,29 @@ import Header from "../../components/landing/Header.astro";
               people that visit the profile.
             </span>
           </div>
+          <div class="flex items-center justify-end mt-5">
+            <a
+              href="https://www.qrmemorias.com/profiles/62"
+              target="_blank"
+              class="flex items-center gap-2 md:text-2xl text-center hover:underline rounded-xl p-3"
+            >
+              Profile example <FaLongArrowAltRight />
+            </a>
+          </div>
         </div>
         <img
-          alt="admin panel"
+          alt="profile page"
           src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/qrmemorias/client/Screenshot%202024-10-16%20162348.png"
           class="border-y-2 border-green-500 md:w-1/2"
         />
       </div>
 
       <div
-        class="bg-gradient-to-r from-green-500 to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
+        class="w-full justify-center items-center flex flex-col to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
       >
-        <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Landing Page</h2>
+        <div class="w-fit p-3 px-20 rounded-2xl bg-gradient-to-r to-emerald-400 from-green-500">
+          <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Landing Page</h2>
+        </div>
       </div>
       <div class="flex flex-col md:flex-row gap-3">
         <div class="w-full md:w-1/2 px-6">
@@ -106,41 +124,32 @@ import Header from "../../components/landing/Header.astro";
               guide to use the service and how this works.
             </span>
           </div>
+          <div class="flex justify-center items-center">
+            <a
+              href="https://www.qrmemorias.com/"
+              target="_blank"
+              class="flex items-center gap-2 md:text-2xl text-center hover:underline rounded-xl p-3"
+            >
+              Landing page
+              <FaLongArrowAltRight />
+            </a>
+          </div>
         </div>
         <img
-          alt="admin panel"
+          alt="landing page
+          "
           src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/qrmemorias/client/Screenshot%202024-10-16%20162957.png"
           class="border-green-500 border-y-2 md:w-1/2"
         />
       </div>
-
-      <div class="bg-green-500 px-5 text-center md:px-0 py-2 md:py-3">
-        <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">Links</h2>
-      </div>
-      <div class="flex gap-2 w-full">
-        <div class="flex flex-col w-1/2 items-center z-10">
-          <a
-            href="https://www.qrmemorias.com/"
-            target="_blank"
-            class="md:text-2xl text-center hover:bg-green-500 active:bg-green-400 bg-green-600 rounded-full p-3"
-          >
-            Landing page
-          </a>
+      <div
+        class="w-full justify-center items-center flex flex-col to-emerald-400 px-5 text-center md:px-0 py-2 md:py-3"
+      >
+        <div class="w-fit p-3 px-20 rounded-2xl bg-gradient-to-r to-emerald-400 from-green-500">
+          <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">
+            Tecnologies Used
+          </h2>
         </div>
-        <div class="flex flex-col w-1/2 items-center z-10">
-          <a
-            href="https://www.qrmemorias.com/profiles/62"
-            target="_blank"
-            class="md:text-2xl text-center hover:bg-sky-600 active:bg-sky-700 bg-sky-800 rounded-full p-3"
-          >
-            Profile example
-          </a>
-        </div>
-      </div>
-      <div class="bg-green-500 px-5 text-center md:px-0 py-2 md:py-3">
-        <h2 class="text-black md:text-black lg:text-3xl md:text-2xl font-bold">
-          Tecnologies Used:
-        </h2>
       </div>
       <ul class="flex flex-wrap px-6 gap-3 justify-center">
         <li
