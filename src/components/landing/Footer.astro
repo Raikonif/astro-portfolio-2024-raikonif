@@ -1,0 +1,48 @@
+---
+import { FaWhatsapp, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+---
+
+<footer class="bg-gradient-to-r from-green-500 to-emerald-400 py-3 md:py-8">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-center md:justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <h2 class="text-xl text-center md:text-start font-bold text-black">Raikonif</h2>
+        <p class="text-sm text-black">&copy; 2024 All rights reserved.</p>
+      </div>
+      <div class="flex space-x-4 mb-4 z-10 md:mb-0">
+        <a
+          href="https://github.com/Raikonif"
+          target="_blank"
+          class="cursor-pointer text-black hover:text-gray-700 transition-colors"
+        >
+          <FaGithub className="w-6 h-6" />
+          <span class="sr-only">GitHub</span>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/raikonif/"
+          target="_blank"
+          class="text-black hover:text-gray-700 transition-colors"
+        >
+          <FaLinkedin className="w-6 h-6" />
+          <span class="sr-only">LinkedIn</span>
+        </a>
+        <a
+          href="https://x.com/Raikonif"
+          target="_blank"
+          class="text-black hover:text-gray-700 transition-colors"
+        >
+          <FaTwitter className="w-6 h-6" />
+          <span class="sr-only">Twitter</span>
+        </a>
+        <a
+          href="https://wa.me/59163142527"
+          target="_blank"
+          class="cursor-pointer text-black hover:text-gray-700 transition-colors"
+        >
+          <FaWhatsapp className="w-6 h-6" />
+          <span class="sr-only">Whatsapp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
