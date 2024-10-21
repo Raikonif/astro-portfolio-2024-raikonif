@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { FaTwitter, FaWhatsapp, FaLinkedin, FaGithub } from "react-icons/fa";
 import Footer from "../components/landing/Footer.astro";
+import Header from "../components/landing/Header.astro";
 
 const metadata = {
   title: "About me",
@@ -9,6 +10,7 @@ const metadata = {
 ---
 
 <Layout title={metadata.title}>
+  <Header link="/"/>
   <div
     class="min-h-screen justify-between flex flex-col mx-auto shadow-lg rounded-lg overflow-hidden"
   >
