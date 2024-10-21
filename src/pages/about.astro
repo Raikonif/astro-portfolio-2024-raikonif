@@ -1,25 +1,87 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { FaTwitter, FaWhatsapp, FaLinkedin, FaGithub } from "react-icons/fa";
+import Footer from "../components/landing/Footer.astro";
 
 const metadata = {
-  title: "About us",
+  title: "About me",
 };
 ---
 
 <Layout title={metadata.title}>
-  <div>
-    <h1>About</h1>
-    <p>
-      Hi, I'm Raikonif. I'm a web developer and designer. I love to create beautiful and functional
-      websites.
-    </p>
-    <p>
-      I'm passionate about learning new technologies and improving my skills. I'm always looking for
-      new challenges and opportunities to grow.
-    </p>
-    <p>
-      When I'm not coding, I enjoy playing video games, watching movies, and spending time with my
-      family.
-    </p>
+  <div
+    class="min-h-screen justify-between flex flex-col mx-auto shadow-lg rounded-lg overflow-hidden"
+  >
+    <div class="flex-1 max-w-3xl mx-auto shadow-lg rounded-lg overflow-hidden">
+      <div class="p-6 pt-10 md:pt-40">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+          <img
+            src="https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/img-profile.jpg"
+            alt="Profile picture"
+            height="150"
+            width="150"
+            class="rounded-full"
+          />
+          <div class="flex-1 space-y-4">
+            <h1 class="text-3xl font-bold text-emerald-500">Diego Alarcón Inturias</h1>
+            <p class="text-gray-300">
+              Hi there I'm Diego, Software Developer with experience in Web Applications and Mobile
+              Applications development as a freelancer, such as single-page applications, static
+              pages, and user management systems using: JavaScript (and Typescript), Python, and
+              Kotlin. I worked in institutions of the government, such as Armada Boliviana, and
+              Empresa Boliviana de Construccion.
+            </p>
+            <ul class="space-y-2 text-gray-400">
+              <li><span class="font-semibold">Location:</span> La Paz, Bolivia</li>
+              <li>
+                <span class="font-semibold">Occupation:</span> Full Stack Developer (heavy Frontend)
+              </li>
+              <li>
+                <span class="font-semibold">Hobbies:</span> Biking, Video Games, and Rescue Pigeons
+              </li>
+            </ul>
+            <div class="flex space-x-4">
+              <a
+                href="https://github.com/janedoe"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-600 hover:text-gray-800 transition-colors"
+              >
+                <FaGithub className="h-6 w-6" />
+                <span class="sr-only">GitHub</span>
+              </a>
+              <a
+                href="https://linkedin.com/in/janedoe"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-600 hover:text-gray-800 transition-colors"
+              >
+                <FaLinkedin className="h-6 w-6" />
+                <span class="sr-only">LinkedIn</span>
+              </a>
+              <a
+                href="https://twitter.com/janedoe"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-600 hover:text-gray-800 transition-colors"
+              >
+                <FaTwitter className="h-6 w-6" />
+                <span class="sr-only">Twitter</span>
+              </a>
+              <a
+                href="https://twitter.com/janedoe"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-600 hover:text-gray-800 transition-colors"
+              >
+                <FaWhatsapp className="h-6 w-6" />
+                <span class="sr-only">Twitter</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Footer />
   </div>
 </Layout>
