@@ -1,0 +1,105 @@
+---
+import { FaAws, FaDatabase, FaGitAlt, FaGithub, FaPython, FaCode } from "react-icons/fa";
+import {
+  SiAstro,
+  SiCloudinary,
+  SiCss,
+  SiDigitalocean,
+  SiDjango,
+  SiDocker,
+  SiFastapi,
+  SiGitlab,
+  SiGithubactions,
+  SiHtml5,
+  SiJavascript,
+  SiMongodb,
+  SiNextdotjs,
+  SiNotion,
+  SiNpm,
+  SiPostgresql,
+  SiRailway,
+  SiReact,
+  SiRender,
+  SiSlack,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
+import { RiRobot2Line } from "react-icons/ri";
+
+interface Props {
+  tech: string;
+  size?: "sm" | "xs";
+}
+
+const { tech, size = "sm" } = Astro.props;
+
+const normalizeTech = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/\(.*?\)/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const iconByTech = {
+  javascript: { Icon: SiJavascript, color: "text-yellow-300" },
+  typescript: { Icon: SiTypescript, color: "text-sky-300" },
+  python: { Icon: FaPython, color: "text-blue-300" },
+  html: { Icon: SiHtml5, color: "text-orange-300" },
+  css: { Icon: SiCss, color: "text-blue-300" },
+  sql: { Icon: FaDatabase, color: "text-violet-300" },
+  postgresql: { Icon: SiPostgresql, color: "text-cyan-300" },
+  mongodb: { Icon: SiMongodb, color: "text-emerald-300" },
+  supabase: { Icon: SiSupabase, color: "text-emerald-300" },
+  react: { Icon: SiReact, color: "text-cyan-300" },
+  "next js": { Icon: SiNextdotjs, color: "text-slate-200" },
+  django: { Icon: SiDjango, color: "text-emerald-300" },
+  fastapi: { Icon: SiFastapi, color: "text-teal-300" },
+  "tailwind css": { Icon: SiTailwindcss, color: "text-cyan-300" },
+  astro: { Icon: SiAstro, color: "text-orange-300" },
+  docker: { Icon: SiDocker, color: "text-sky-300" },
+  digitalocean: { Icon: SiDigitalocean, color: "text-blue-300" },
+  cloudinary: { Icon: SiCloudinary, color: "text-blue-300" },
+  railway: { Icon: SiRailway, color: "text-fuchsia-300" },
+  render: { Icon: SiRender, color: "text-slate-200" },
+  langchain: { Icon: RiRobot2Line, color: "text-lime-300" },
+  langgraph: { Icon: RiRobot2Line, color: "text-cyan-300" },
+  "fooocus ai": { Icon: RiRobot2Line, color: "text-pink-300" },
+  sam2: { Icon: RiRobot2Line, color: "text-indigo-300" },
+  aws: { Icon: FaAws, color: "text-amber-300" },
+  "github actions": { Icon: SiGithubactions, color: "text-blue-300" },
+  github: { Icon: FaGithub, color: "text-slate-200" },
+  gitlab: { Icon: SiGitlab, color: "text-orange-300" },
+  git: { Icon: FaGitAlt, color: "text-orange-300" },
+  slack: { Icon: SiSlack, color: "text-violet-300" },
+  notion: { Icon: SiNotion, color: "text-slate-200" },
+  opencv2: { Icon: RiRobot2Line, color: "text-red-300" },
+  n8n: { Icon: SiNpm, color: "text-rose-300" },
+} as const;
+
+const normalized = normalizeTech(tech);
+const iconData = iconByTech[normalized as keyof typeof iconByTech] ?? {
+  Icon: FaCode,
+  color: "text-slate-300",
+};
+const Icon = iconData.Icon;
+
+const sizeClasses =
+  size === "xs"
+    ? {
+        pill: "px-2.5 py-1 text-xs",
+        icon: "text-[0.78rem]",
+      }
+    : {
+        pill: "px-3 py-1.5 text-sm",
+        icon: "text-sm",
+      };
+---
+
+<span
+  class={`inline-flex items-center gap-1.5 rounded-full border border-white/15 ${sizeClasses.pill} text-slate-200 transition duration-500 hover:border-cyan-300/50`}
+>
+  <Icon class:list={[sizeClasses.icon, iconData.color]} aria-hidden="true" />
+  <span>{tech}</span>
+</span>
+

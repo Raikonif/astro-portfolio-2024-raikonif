@@ -1,0 +1,91 @@
+---
+import SeoLayout from "../../layouts/SeoLayout.astro";
+import NavBar from "../../components/portfolio/NavBar.astro";
+import SiteFooter from "../../components/portfolio/SiteFooter.astro";
+import TechBadge from "../../components/portfolio/TechBadge.astro";
+import {
+  supportedLangs,
+  getLangFromParam,
+  portfolioData,
+  pageMetaByLang,
+  getPersonStructuredData,
+  type Lang,
+} from "../../data/portfolio";
+
+export function getStaticPaths() {
+  return supportedLangs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromParam(Astro.params.lang) as Lang;
+const copy = portfolioData[lang];
+const pageMeta = pageMetaByLang[lang].projects;
+
+const canonicalPath = `/${lang}/projects/`;
+const alternatePathEs = "/es/projects/";
+const alternatePathEn = "/en/projects/";
+---
+
+<SeoLayout
+  lang={lang}
+  title={`${pageMeta.title} | ${copy.seo.siteName}`}
+  description={pageMeta.description}
+  canonicalPath={canonicalPath}
+  alternatePathEs={alternatePathEs}
+  alternatePathEn={alternatePathEn}
+  structuredData={getPersonStructuredData(lang)}
+>
+  <NavBar lang={lang} currentPage="projects" />
+
+  <main class="mx-auto mt-8 w-full max-w-6xl px-4 md:px-6">
+    <section class="portfolio-shell mt-8 p-6 md:p-10">
+      <h1 class="font-title text-3xl text-white md:text-5xl">{copy.nav.projects}</h1>
+      <p class="mt-4 max-w-3xl text-slate-300">
+        {
+          lang === "es"
+            ? "Seleccion de proyectos reales y conceptos mock para mostrar producto, arquitectura y ejecucion tecnica."
+            : "Selection of real projects and mocked concepts to show product thinking, architecture, and execution."
+        }
+      </p>
+    </section>
+
+    <section class="mt-8 grid gap-4 md:grid-cols-2">
+      {
+        copy.projects.map((project, index) => (
+          <article class="group portfolio-card p-5" style={`animation-delay:${index * 80}ms`}>
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class="text-xs uppercase tracking-wide text-cyan-100">
+                  {project.year} · {project.type}
+                </p>
+                <h2 class="font-title mt-2 text-2xl text-white">{project.title}</h2>
+              </div>
+              {project.isMocked && (
+                <span class="rounded-full border border-cyan-300/30 bg-cyan-400/10 px-2.5 py-1 text-[11px] uppercase tracking-wide text-cyan-100">
+                  {copy.sectionTitles.mockedLabel}
+                </span>
+              )}
+            </div>
+
+            <p class="mt-3 text-sm text-slate-300">{project.description}</p>
+            <p class="mt-3 text-sm text-slate-400">{project.impact}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <TechBadge tech={tech} size="xs" />
+              ))}
+            </div>
+
+            <a
+              href={`/${lang}/projects/${project.slug}/`}
+              class="mt-5 inline-flex text-sm text-cyan-200 transition duration-500 group-hover:text-cyan-100"
+            >
+              {lang === "es" ? "Ver detalle" : "View details"}
+            </a>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+
+  <SiteFooter lang={lang} />
+</SeoLayout>
+

@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+/* Keep using the existing JS config for custom theme extensions and animations. */
+@config "../../tailwind.config.mjs";
+

@@ -1,0 +1,90 @@
+---
+import SeoLayout from "../../../layouts/SeoLayout.astro";
+import NavBar from "../../../components/portfolio/NavBar.astro";
+import SiteFooter from "../../../components/portfolio/SiteFooter.astro";
+import TechBadge from "../../../components/portfolio/TechBadge.astro";
+import {
+  supportedLangs,
+  getLangFromParam,
+  portfolioData,
+  getPersonStructuredData,
+  type Lang,
+} from "../../../data/portfolio";
+
+export function getStaticPaths() {
+  return supportedLangs.flatMap((lang) =>
+    portfolioData[lang].projects.map((project) => ({
+      params: {
+        lang,
+        slug: project.slug,
+      },
+    })),
+  );
+}
+
+const lang = getLangFromParam(Astro.params.lang) as Lang;
+const copy = portfolioData[lang];
+const slug = Astro.params.slug ?? "";
+const project = copy.projects.find((item) => item.slug === slug);
+
+if (!project) {
+  throw new Error(`Unknown project slug: ${slug}`);
+}
+
+const canonicalPath = `/${lang}/projects/${project.slug}/`;
+const alternatePathEs = `/es/projects/${project.slug}/`;
+const alternatePathEn = `/en/projects/${project.slug}/`;
+
+const title = `${project.title} | ${copy.seo.siteName}`;
+const description = project.description;
+---
+
+<SeoLayout
+  lang={lang}
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  alternatePathEs={alternatePathEs}
+  alternatePathEn={alternatePathEn}
+  structuredData={getPersonStructuredData(lang)}
+>
+  <NavBar lang={lang} currentPage="projects" />
+
+  <main class="mx-auto mt-8 w-full max-w-4xl px-4 md:px-6">
+    <article class="portfolio-shell p-6 md:p-10">
+      <p class="text-xs uppercase tracking-wide text-cyan-100">{project.year} · {project.type}</p>
+      <h1 class="font-title mt-3 text-3xl text-white md:text-5xl">{project.title}</h1>
+      {
+        project.isMocked && (
+          <span class="mt-4 inline-flex rounded-full border border-cyan-300/30 bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-wide text-cyan-100">
+            {copy.sectionTitles.mockedLabel}
+          </span>
+        )
+      }
+
+      <p class="mt-6 text-slate-300">{project.description}</p>
+
+      <section class="portfolio-card mt-8 p-5">
+        <h2 class="font-title text-xl text-white">{lang === "es" ? "Impacto" : "Impact"}</h2>
+        <p class="mt-2 text-sm text-slate-300">{project.impact}</p>
+      </section>
+
+      <section class="portfolio-card mt-6 p-5">
+        <h2 class="font-title text-xl text-white">{lang === "es" ? "Stack" : "Stack"}</h2>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {project.stack.map((tech) => <TechBadge tech={tech} />)}
+        </div>
+      </section>
+
+      <a
+        href={`/${lang}/projects/`}
+        class="mt-7 inline-flex text-sm text-cyan-200 transition duration-500 hover:text-cyan-100"
+      >
+        {lang === "es" ? "Volver a proyectos" : "Back to projects"}
+      </a>
+    </article>
+  </main>
+
+  <SiteFooter lang={lang} />
+</SeoLayout>
+

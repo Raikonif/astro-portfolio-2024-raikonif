@@ -1,0 +1,132 @@
+---
+import SeoLayout from "../../layouts/SeoLayout.astro";
+import NavBar from "../../components/portfolio/NavBar.astro";
+import SiteFooter from "../../components/portfolio/SiteFooter.astro";
+import TechBadge from "../../components/portfolio/TechBadge.astro";
+import {
+  supportedLangs,
+  getLangFromParam,
+  portfolioData,
+  pageMetaByLang,
+  getPersonStructuredData,
+  type Lang,
+} from "../../data/portfolio";
+
+export function getStaticPaths() {
+  return supportedLangs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromParam(Astro.params.lang) as Lang;
+const copy = portfolioData[lang];
+const pageMeta = pageMetaByLang[lang].about;
+
+const canonicalPath = `/${lang}/about/`;
+const alternatePathEs = "/es/about/";
+const alternatePathEn = "/en/about/";
+---
+
+<SeoLayout
+  lang={lang}
+  title={`${pageMeta.title} | ${copy.seo.siteName}`}
+  description={pageMeta.description}
+  canonicalPath={canonicalPath}
+  alternatePathEs={alternatePathEs}
+  alternatePathEn={alternatePathEn}
+  structuredData={getPersonStructuredData(lang)}
+>
+  <NavBar lang={lang} currentPage="about" />
+
+  <main class="mx-auto mt-8 w-full max-w-6xl px-4 md:px-6">
+    <section class="portfolio-shell mt-8 p-6 md:p-10 animate-fade-up-slow">
+      <h1 class="font-title text-3xl text-white md:text-5xl">{copy.sectionTitles.about}</h1>
+      <p class="mt-6 max-w-3xl text-slate-300">{copy.person.summary}</p>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        <article class="portfolio-card p-5">
+          <h2 class="font-title text-lg text-white">{copy.person.name}</h2>
+          <p class="mt-1 text-sm text-slate-300">{copy.person.role}</p>
+          <p class="mt-4 text-sm text-slate-400">{copy.person.cityCountry}</p>
+          <p class="mt-1 text-sm text-slate-400">{copy.person.phone}</p>
+          <p class="mt-1 text-sm text-slate-400">{copy.person.email}</p>
+        </article>
+
+        <article class="portfolio-card p-5">
+          <h2 class="font-title text-lg text-white">{lang === "es" ? "Idiomas" : "Languages"}</h2>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            {copy.person.languages.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio-shell mt-8 p-6 md:p-10">
+      <h2 class="font-title text-2xl text-white md:text-3xl">{copy.sectionTitles.skills}</h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <article class="portfolio-card p-5">
+          <h3 class="font-title text-lg text-cyan-100">
+            {lang === "es" ? "Programacion" : "Programming"}
+          </h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {copy.skills.programming.map((item) => <TechBadge tech={item} />)}
+          </div>
+        </article>
+
+        <article class="portfolio-card p-5">
+          <h3 class="font-title text-lg text-cyan-100">
+            {lang === "es" ? "Bases de Datos" : "Databases"}
+          </h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {copy.skills.databases.map((item) => <TechBadge tech={item} />)}
+          </div>
+        </article>
+
+        <article class="portfolio-card p-5 md:col-span-2">
+          <h3 class="font-title text-lg text-cyan-100">
+            {lang === "es" ? "Frameworks y Herramientas" : "Frameworks and Tools"}
+          </h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {copy.skills.frameworksTools.map((item) => <TechBadge tech={item} />)}
+          </div>
+        </article>
+
+        <article class="portfolio-card p-5">
+          <h3 class="font-title text-lg text-cyan-100">
+            {lang === "es" ? "Gestion" : "Project Management"}
+          </h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {copy.skills.management.map((item) => <TechBadge tech={item} />)}
+          </div>
+        </article>
+
+        <article class="portfolio-card p-5">
+          <h3 class="font-title text-lg text-cyan-100">
+            {lang === "es" ? "Versionamiento" : "Version Control"}
+          </h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {copy.skills.versionControl.map((item) => <TechBadge tech={item} />)}
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio-shell mt-8 p-6 md:p-10">
+      <h2 class="font-title text-2xl text-white md:text-3xl">
+        {lang === "es" ? "Educacion" : "Education"}
+      </h2>
+      <div class="mt-4 space-y-3">
+        {
+          copy.education.map((item) => (
+            <article class="portfolio-card p-4">
+              <p class="text-sm text-cyan-100">{item.period}</p>
+              <h3 class="font-title text-lg text-white">{item.degree}</h3>
+              <p class="text-sm text-slate-300">{item.school}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter lang={lang} />
+</SeoLayout>
+

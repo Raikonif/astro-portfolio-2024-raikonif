@@ -1,0 +1,33 @@
+---
+import type { Lang } from "../../data/portfolio";
+import { portfolioData } from "../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = portfolioData[lang];
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-white/10 bg-slate-900/70">
+  <div class="mx-auto grid w-full max-w-6xl gap-6 px-4 py-10 md:grid-cols-2 md:px-6">
+    <div>
+      <h2 class="font-title text-lg text-slate-100">{copy.person.name}</h2>
+      <p class="mt-2 text-sm text-slate-400">{copy.person.role}</p>
+      <p class="mt-2 text-sm text-slate-400">{copy.person.cityCountry}</p>
+      <p class="mt-1 text-sm text-slate-400">{copy.person.email}</p>
+    </div>
+
+    <div class="md:text-right">
+      <p class="text-sm text-slate-400">{copy.nav.contact}</p>
+      <div class="mt-2 flex gap-4 md:justify-end">
+        <a href={copy.person.github} target="_blank" rel="noreferrer" class="text-sm text-slate-300 transition duration-500 hover:text-cyan-200">GitHub</a>
+        <a href={copy.person.linkedin} target="_blank" rel="noreferrer" class="text-sm text-slate-300 transition duration-500 hover:text-cyan-200">LinkedIn</a>
+        <a href={copy.person.x} target="_blank" rel="noreferrer" class="text-sm text-slate-300 transition duration-500 hover:text-cyan-200">X</a>
+      </div>
+      <p class="mt-4 text-xs text-slate-500">© {year} {copy.person.name}</p>
+    </div>
+  </div>
+</footer>

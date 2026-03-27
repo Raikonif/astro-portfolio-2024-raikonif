@@ -1,0 +1,251 @@
+---
+import SeoLayout from "../../layouts/SeoLayout.astro";
+import NavBar from "../../components/portfolio/NavBar.astro";
+import SiteFooter from "../../components/portfolio/SiteFooter.astro";
+import TechBadge from "../../components/portfolio/TechBadge.astro";
+import {
+  supportedLangs,
+  getLangFromParam,
+  portfolioData,
+  pageMetaByLang,
+  getPersonStructuredData,
+  type Lang,
+} from "../../data/portfolio";
+
+export function getStaticPaths() {
+  return supportedLangs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromParam(Astro.params.lang) as Lang;
+const copy = portfolioData[lang];
+const pageMeta = pageMetaByLang[lang].home;
+
+const canonicalPath = `/${lang}/`;
+const alternatePathEs = "/es/";
+const alternatePathEn = "/en/";
+
+const featuredProjects = copy.projects.slice(0, 3);
+const skillPreview = [
+  ...copy.skills.programming,
+  ...copy.skills.frameworksTools,
+  ...copy.skills.databases,
+].slice(0, 16);
+const cvDownloadUrl =
+  "https://portfolio-raikonif.nyc3.cdn.digitaloceanspaces.com/CV%20Diego%20Alarcon%20Inturias.pdf?response-content-disposition=attachment%3B%20filename%3D%22CV-Diego-Alarcon-Inturias.pdf%22&response-content-type=application%2Fpdf";
+---
+
+<SeoLayout
+  lang={lang}
+  title={`${pageMeta.title} | ${copy.seo.siteName}`}
+  description={pageMeta.description}
+  canonicalPath={canonicalPath}
+  alternatePathEs={alternatePathEs}
+  alternatePathEn={alternatePathEn}
+  structuredData={getPersonStructuredData(lang)}
+>
+  <NavBar lang={lang} currentPage="" />
+
+  <main class="mx-auto w-full max-w-6xl px-4 md:px-6">
+    <section class="portfolio-shell mesh-glow mt-8 p-6 md:p-10 animate-fade-up-slow">
+      <div class="grid gap-6 lg:grid-cols-[1.35fr_0.85fr] lg:items-end">
+        <div>
+          <p class="portfolio-kicker">{copy.hero.badge}</p>
+          <h1 class="font-title mt-5 max-w-3xl text-3xl leading-tight text-white md:text-6xl">
+            {copy.hero.title}
+          </h1>
+          <p class="mt-5 max-w-2xl text-base text-slate-300 md:text-lg">{copy.hero.subtitle}</p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a
+              href={`/${lang}/projects/`}
+              class="rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-slate-950 transition duration-500 hover:-translate-y-0.5 hover:bg-cyan-200"
+            >
+              {copy.hero.ctaPrimary}
+            </a>
+            <a
+              href={`/${lang}/experience/`}
+              class="rounded-full border border-white/20 px-5 py-2.5 text-sm text-slate-200 transition duration-500 hover:border-cyan-300/60 hover:text-cyan-100"
+            >
+              {copy.hero.ctaSecondary}
+            </a>
+            <button
+              type="button"
+              id="cv-download-btn"
+              data-cv-url={cvDownloadUrl}
+              data-cv-filename="CV-Diego-Alarcon-Inturias.pdf"
+              class="rounded-full border border-emerald-300/45 bg-emerald-300/10 px-5 py-2.5 text-sm font-semibold text-emerald-100 transition duration-500 hover:-translate-y-0.5 hover:border-emerald-200/70 hover:bg-emerald-300/15"
+            >
+              {lang === "es" ? "Descargar CV" : "Download CV"}
+            </button>
+          </div>
+        </div>
+
+        <aside class="portfolio-card p-5 md:p-6">
+          <div class="relative mx-auto w-full max-w-[220px]">
+            <div
+              class="absolute -inset-1 rounded-2xl bg-gradient-to-br from-cyan-300/40 via-emerald-300/10 to-amber-200/30 blur-sm"
+            >
+            </div>
+            <img
+              src="/CVPHOTO.jpg"
+              alt="Diego Alarcon Inturias profile photo"
+              class="relative aspect-[4/5] w-full rounded-2xl border border-white/20 object-cover object-center shadow-2xl"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+
+          <p class="font-mono-brand mt-5 text-xs uppercase tracking-[0.2em] text-cyan-200">
+            Profile
+          </p>
+          <h2 class="font-title mt-2 text-xl text-white">{copy.person.name}</h2>
+          <p class="mt-1 text-sm text-slate-300">{copy.person.role}</p>
+          <div class="mt-4 space-y-2 text-sm text-slate-300">
+            <p>{copy.person.cityCountry}</p>
+            <a href={`mailto:${copy.person.email}`} class="text-cyan-200 hover:text-cyan-100"
+              >{copy.person.email}</a
+            >
+          </div>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <a href={copy.person.github} target="_blank" rel="noreferrer" class="portfolio-kicker"
+              >GitHub</a
+            >
+            <a href={copy.person.linkedin} target="_blank" rel="noreferrer" class="portfolio-kicker"
+              >LinkedIn</a
+            >
+            <a href={copy.person.x} target="_blank" rel="noreferrer" class="portfolio-kicker">X</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="mt-8 grid gap-4 md:grid-cols-2">
+      {
+        [
+          copy.stats.yearsLabel,
+          copy.stats.projectsLabel,
+          copy.stats.teamsLabel,
+          copy.stats.aiLabel,
+        ].map((item) => (
+          <article class="portfolio-card p-5 text-slate-200 animate-fade-up-slow">
+            <p class="text-sm md:text-base">{item}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="mt-14">
+      <div class="flex items-end justify-between">
+        <h2 class="font-title text-2xl text-white md:text-3xl">
+          {copy.sectionTitles.featuredProjects}
+        </h2>
+        <a
+          href={`/${lang}/projects/`}
+          class="text-sm text-cyan-200 transition duration-500 hover:text-cyan-100"
+        >
+          {lang === "es" ? "Ver todo" : "See all"}
+        </a>
+      </div>
+      <div class="mt-6 grid gap-4 md:grid-cols-3">
+        {
+          featuredProjects.map((project) => (
+            <article class="group portfolio-card p-5">
+              <p class="text-xs uppercase tracking-wide text-slate-400">
+                {project.year} · {project.type}
+              </p>
+              <h3 class="font-title mt-3 text-xl text-slate-100">{project.title}</h3>
+              <p class="mt-3 text-sm text-slate-300">{project.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {project.stack.slice(0, 3).map((tech) => (
+                  <TechBadge tech={tech} size="xs" />
+                ))}
+              </div>
+              <a
+                href={`/${lang}/projects/${project.slug}/`}
+                class="mt-4 inline-flex text-sm text-cyan-200 transition duration-500 group-hover:text-cyan-100"
+              >
+                {lang === "es" ? "Detalle" : "Details"}
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="portfolio-shell mt-14 p-6 md:p-10">
+      <h2 class="font-title text-2xl text-white md:text-3xl">{copy.sectionTitles.skills}</h2>
+      <div class="mt-6 flex flex-wrap gap-2">
+        {
+          skillPreview.map((skill, index) => (
+            <div class={`transition duration-500 ${index % 3 === 0 ? "animate-drift-slower" : ""}`}>
+              <TechBadge tech={skill} />
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="portfolio-shell mt-14 p-6 md:p-10">
+      <h2 class="font-title text-xl text-cyan-100 md:text-2xl">{copy.sectionTitles.contact}</h2>
+      <p class="mt-3 max-w-2xl text-sm text-slate-300 md:text-base">{copy.person.summary}</p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <a
+          href={`mailto:${copy.person.email}`}
+          class="rounded-full border border-white/20 px-4 py-2 text-slate-200 transition duration-500 hover:border-cyan-300/60 hover:text-cyan-100"
+        >
+          {copy.person.email}
+        </a>
+        <a
+          href={copy.person.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          class="rounded-full border border-white/20 px-4 py-2 text-slate-200 transition duration-500 hover:border-cyan-300/60 hover:text-cyan-100"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter lang={lang} />
+
+  <script is:inline>
+    const btn = document.getElementById("cv-download-btn");
+
+    if (btn instanceof HTMLButtonElement) {
+      btn.addEventListener("click", async () => {
+        const url = btn.dataset.cvUrl;
+        const filename = btn.dataset.cvFilename || "cv.pdf";
+        if (!url) return;
+
+        const originalLabel = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.classList.add("opacity-70", "cursor-not-allowed");
+
+          const response = await fetch(url, { method: "GET" });
+          if (!response.ok) {
+            throw new Error(`Failed to download CV: ${response.status}`);
+          }
+
+          const blob = await response.blob();
+          const objectUrl = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = objectUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(objectUrl);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          btn.disabled = false;
+          btn.classList.remove("opacity-70", "cursor-not-allowed");
+          btn.textContent = originalLabel;
+        }
+      });
+    }
+  </script>
+</SeoLayout>
+

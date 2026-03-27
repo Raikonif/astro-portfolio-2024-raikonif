@@ -1,0 +1,86 @@
+---
+import SeoLayout from "../../layouts/SeoLayout.astro";
+import NavBar from "../../components/portfolio/NavBar.astro";
+import SiteFooter from "../../components/portfolio/SiteFooter.astro";
+import TechBadge from "../../components/portfolio/TechBadge.astro";
+import {
+  supportedLangs,
+  getLangFromParam,
+  portfolioData,
+  pageMetaByLang,
+  getPersonStructuredData,
+  type Lang,
+} from "../../data/portfolio";
+
+export function getStaticPaths() {
+  return supportedLangs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromParam(Astro.params.lang) as Lang;
+const copy = portfolioData[lang];
+const pageMeta = pageMetaByLang[lang].experience;
+
+const canonicalPath = `/${lang}/experience/`;
+const alternatePathEs = "/es/experience/";
+const alternatePathEn = "/en/experience/";
+---
+
+<SeoLayout
+  lang={lang}
+  title={`${pageMeta.title} | ${copy.seo.siteName}`}
+  description={pageMeta.description}
+  canonicalPath={canonicalPath}
+  alternatePathEs={alternatePathEs}
+  alternatePathEn={alternatePathEn}
+  structuredData={getPersonStructuredData(lang)}
+>
+  <NavBar lang={lang} currentPage="experience" />
+
+  <main class="mx-auto mt-8 w-full max-w-6xl px-4 md:px-6">
+    <section class="portfolio-shell mt-8 p-6 md:p-10">
+      <h1 class="font-title text-3xl text-white md:text-5xl">{copy.sectionTitles.experience}</h1>
+      <p class="mt-4 max-w-3xl text-slate-300">
+        {
+          lang === "es"
+            ? "Experiencia construyendo productos digitales para startups, clientes corporativos e instituciones publicas."
+            : "Experience building digital products for startups, corporate clients, and public institutions."
+        }
+      </p>
+    </section>
+
+    <section class="relative mt-8">
+      <div
+        class="absolute left-4 top-0 hidden h-full w-px bg-gradient-to-b from-cyan-300/50 to-transparent md:block"
+      >
+      </div>
+      <div class="space-y-5">
+        {
+          copy.experience.map((item, index) => (
+            <article
+              class="portfolio-card p-5 md:ml-10 animate-fade-up-slow"
+              style={`animation-delay:${index * 120}ms`}
+            >
+              <p class="text-xs uppercase tracking-wide text-cyan-100">{item.period}</p>
+              <h2 class="font-title mt-2 text-xl text-white">{item.role}</h2>
+              <p class="text-sm text-slate-300">{item.company}</p>
+              <p class="mt-3 text-sm text-slate-300">{item.summary}</p>
+              <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                {item.highlights.map((highlight) => (
+                  <li>• {highlight}</li>
+                ))}
+              </ul>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {item.stack.map((tech) => (
+                  <TechBadge tech={tech} size="xs" />
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter lang={lang} />
+</SeoLayout>
+

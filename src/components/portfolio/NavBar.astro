@@ -1,0 +1,96 @@
+---
+import type { Lang } from "../../data/portfolio";
+import { portfolioData } from "../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+  currentPage: "" | "about" | "experience" | "projects";
+}
+
+const { lang, currentPage } = Astro.props;
+const copy = portfolioData[lang];
+const otherLang: Lang = lang === "es" ? "en" : "es";
+
+const pages = [
+  { key: "", label: copy.nav.home },
+  { key: "about", label: copy.nav.about },
+  { key: "experience", label: copy.nav.experience },
+  { key: "projects", label: copy.nav.projects },
+] as const;
+
+const getHref = (page: "" | "about" | "experience" | "projects", targetLang = lang) => {
+  if (!page) return `/${targetLang}/`;
+  return `/${targetLang}/${page}/`;
+};
+
+const pathname = Astro.url.pathname;
+const switchHref =
+  pathname.replace(/^\/(es|en)(?=\/|$)/, `/${otherLang}`) === pathname
+    ? getHref(currentPage, otherLang)
+    : pathname.replace(/^\/(es|en)(?=\/|$)/, `/${otherLang}`);
+---
+
+<header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+  <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 md:px-6">
+    <a href={getHref("")} class="group inline-flex items-center gap-2">
+      <span
+        class="font-mono-brand inline-flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-300/30 bg-cyan-400/10 text-[11px] font-semibold text-cyan-100 shadow-[0_0_24px_rgba(94,234,212,0.18)]"
+        >DA</span
+      >
+      <span
+        class="font-title text-sm tracking-wide text-slate-200 transition-colors duration-500 group-hover:text-cyan-200"
+      >
+        Diego Alarcon Inturias
+      </span>
+    </a>
+
+    <nav
+      class="hidden items-center gap-1 rounded-full border border-white/10 bg-slate-900/70 px-2 py-1 md:flex"
+    >
+      {
+        pages.map((page) => {
+          const isActive = currentPage === page.key;
+          return (
+            <a
+              href={getHref(page.key)}
+              class={`rounded-full px-4 py-2 text-sm transition duration-500 ${
+                isActive
+                  ? "bg-cyan-400/20 text-cyan-100"
+                  : "text-slate-300 hover:bg-white/5 hover:text-slate-100"
+              }`}
+            >
+              {page.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <a
+      href={switchHref}
+      aria-label={lang === "es" ? "Switch to English" : "Cambiar a Espanol"}
+      class="font-mono-brand rounded-full border border-cyan-300/35 bg-cyan-300/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-100"
+    >
+      {otherLang}
+    </a>
+  </div>
+
+  <nav class="mx-auto flex w-full max-w-6xl gap-2 overflow-x-auto px-4 pb-3 md:hidden md:px-6">
+    {
+      pages.map((page) => {
+        const isActive = currentPage === page.key;
+        return (
+          <a
+            href={getHref(page.key)}
+            class={`rounded-full px-3 py-1.5 text-sm whitespace-nowrap transition duration-500 ${
+              isActive ? "bg-cyan-400/20 text-cyan-100" : "bg-white/5 text-slate-300"
+            }`}
+          >
+            {page.label}
+          </a>
+        );
+      })
+    }
+  </nav>
+</header>
+
